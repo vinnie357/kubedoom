@@ -2,7 +2,7 @@ FROM golang:1.14-alpine AS gobuild
 
 # arm64/amd64
 ARG ARCH=arm64
-
+ENV ARCH $ARCH
 
 WORKDIR /go/src/kubedoom
 ADD kubedoom.go .
@@ -13,6 +13,9 @@ FROM ubuntu:20.10 AS ubuntu
 RUN apt-get update
 
 FROM ubuntu AS ubuntu-deps
+# arm64/amd64
+ARG ARCH=arm64
+ENV ARCH $ARCH
 # Install dependencies
 RUN apt-get install -y \
   -o APT::Install-Suggests=0 \
