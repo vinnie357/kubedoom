@@ -111,3 +111,16 @@ $ vncviewer viewer localhost:5900
 
 Kubedoom requires a service account with permissions to list all pods and delete
 them and uses kubectl 1.19.2.
+
+
+## build arm
+```bash
+# docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo chmod +x get-docker.sh
+. get-docker.sh 
+docker build --pull --rm -f "Dockerfile.arm" -t kubedoom:latest .
+# make
+make buildarm
+
+```
